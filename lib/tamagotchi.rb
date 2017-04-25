@@ -36,4 +36,16 @@ class Tamagotchi
     @activity_level
   end
 
+  define_method(:is_alive) do
+    (@food_level||@activity_level||@sleep_level) > 0
+  end
+
+  define_method(:feed) do
+    @food_level += 2
+  end
+
+  define_method(:set_food_level) do |food|
+    @food_level = food
+  end
+
 end
