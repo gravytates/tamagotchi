@@ -1,0 +1,26 @@
+<h1>TAMAGOTCHI PALACE OF HORROR!</h1>
+
+<p>
+  Here are your tamagotchis:
+</p>
+
+
+<ul>
+  <% @tamagotchies.each() do |tamagotchi| %>
+    <li><%= tamagotchi.name() %></li>
+  <% end %>
+</ul>
+<h2>
+  Create a Tamagotchi:
+</h2>
+
+<form action="/add" method="post">
+  <label for="name">Your Tamagotchi name:</label><br>
+  <input type="text" name="name"><br>
+
+  <button type="submit">Meet your Meat!</button>
+</form>
+
+<form class="" action="/dinner" method="post">
+  <button type="submit" name="button">Dinner Time!</button>
+</form>

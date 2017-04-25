@@ -112,5 +112,11 @@ describe(Tamagotchi) do
     end
   end
 
-
+  describe("#id") do
+    it("returns the id of the tamagotchi") do
+      test_tamagotchi = Tamagotchi.new("Test")
+      test_tamagotchi.save()
+      expect(test_tamagotchi.id()).to(eq(1))
+    end
+  end
 end

@@ -8,6 +8,7 @@ class Tamagotchi
     @activity_level = 10
     @start_time = Time.new()
     @active = true
+    @id = @@all_tamagotchies.length().+(1)
   end
 
   define_singleton_method(:all) do
@@ -24,6 +25,10 @@ class Tamagotchi
 
   define_method(:name) do
     @name
+  end
+
+  define_method(:id) do
+    @id
   end
 
   define_method(:food_level) do
