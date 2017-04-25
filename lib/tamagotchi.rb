@@ -48,4 +48,22 @@ class Tamagotchi
     @food_level = food
   end
 
+  define_method(:active) do
+    @start_time = Time.new()
+  end
+
+  define_method(:time_lapsed) do |seconds|
+    active = true
+    while (active == true) do
+      if self.is_alive() == false
+        active = false
+      elsif (Time.now().-(@start_time)).%(seconds).==(0)
+        @food_level -= 1
+        @sleep_level -= 1
+        @activity_level -= 1
+      end
+    end
+    active
+  end
+
 end

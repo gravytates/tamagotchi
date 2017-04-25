@@ -73,6 +73,12 @@ describe(Tamagotchi) do
       test_tamagotchi.feed()
       expect(test_tamagotchi.food_level).to(eq(12))
     end
+
+    it("will decrease food, sleep, and active by 1 every second") do
+      test_tamagotchi = Tamagotchi.new("Test")
+      test_tamagotchi.active()
+      expect(test_tamagotchi.time_lapsed(1)).to(eq(false))
+    end
   end
 
 end
