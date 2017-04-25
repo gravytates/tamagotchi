@@ -56,16 +56,28 @@ describe(Tamagotchi) do
     end
   end
 
-  describe("#is_alive") do
+  describe("#is_dead") do
     it("is alive if the food, sleep, and activity levels are above 0") do
       test_tamagotchi = Tamagotchi.new("Test")
-      expect(test_tamagotchi.is_alive()).to(eq(true))
+      expect(test_tamagotchi.is_dead()).to(eq(false))
     end
 
     it("is dead if the food level is 0") do
       test_tamagotchi = Tamagotchi.new("Test")
       test_tamagotchi.set_food_level(0)
-      expect(test_tamagotchi.is_alive()).to(eq(false))
+      expect(test_tamagotchi.is_dead()).to(eq(true))
+    end
+
+    it("is dead if the sleep level is 0") do
+      test_tamagotchi = Tamagotchi.new("Test")
+      test_tamagotchi.set_sleep_level(0)
+      expect(test_tamagotchi.is_dead()).to(eq(true))
+    end
+
+    it("is dead if the activity level is 0") do
+      test_tamagotchi = Tamagotchi.new("Test")
+      test_tamagotchi.set_activity_level(0)
+      expect(test_tamagotchi.is_dead()).to(eq(true))
     end
 
     it("updates the food level by 2") do
@@ -76,9 +88,8 @@ describe(Tamagotchi) do
 
     it("will decrease food, sleep, and active by 1 every second") do
       test_tamagotchi = Tamagotchi.new("Test")
-      test_tamagotchi.active()
+      # @food_level = 3
       expect(test_tamagotchi.time_lapsed(1)).to(eq(false))
     end
   end
-
 end

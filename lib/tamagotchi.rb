@@ -6,6 +6,8 @@ class Tamagotchi
     @food_level = 10
     @sleep_level = 10
     @activity_level = 10
+    @start_time = Time.new()
+    @active = true
   end
 
   define_singleton_method(:all) do
@@ -36,34 +38,49 @@ class Tamagotchi
     @activity_level
   end
 
-  define_method(:is_alive) do
-    (@food_level||@activity_level||@sleep_level) > 0
+  define_method(:is_dead) do
+    (@food_level < 1) || (@sleep_level < 1) || (@activity_level < 1)
   end
 
   define_method(:feed) do
     @food_level += 2
   end
 
+  define_method(:sleep) do
+    @sleep_level += 10
+  end
+
+  define_method(:play) do
+    @activity_level += 6
+  end
+
   define_method(:set_food_level) do |food|
     @food_level = food
   end
 
-  define_method(:active) do
-    @start_time = Time.new()
+  define_method(:set_sleep_level) do |sleep|
+    @sleep_level = sleep
   end
 
+  define_method(:set_activity_level) do |activity|
+    @activity_level = activity
+  end
+
+
   define_method(:time_lapsed) do |seconds|
-    active = true
-    while (active == true) do
-      if self.is_alive() == false
-        active = false
+    while (@active == true) do
+      if self.is_dead() == true
+        @active = false
       elsif (Time.now().-(@start_time)).%(seconds).==(0)
         @food_level -= 1
         @sleep_level -= 1
         @activity_level -= 1
       end
     end
-    active
+    @active
   end
-
 end
+
+# define_method(:active) do
+#
+# end
