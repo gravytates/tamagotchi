@@ -66,7 +66,6 @@ class Tamagotchi
     @activity_level = activity
   end
 
-
   define_method(:time_lapsed) do |seconds|
     while (@active == true) do
       if self.is_dead() == true
