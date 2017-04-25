@@ -7,7 +7,7 @@
 
 <ul>
   <% @tamagotchies.each() do |tamagotchi| %>
-    <li><%= tamagotchi.name() %></li>
+    <li><a href="/<%= tamagotchi.id() %>"><%= tamagotchi.name() %></a></li>
   <% end %>
 </ul>
 <h2>

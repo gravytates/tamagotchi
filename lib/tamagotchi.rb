@@ -19,6 +19,16 @@ class Tamagotchi
     @@all_tamagotchies = []
   end
 
+  define_singleton_method(:find) do |id|
+    found_tamagotchi = nil
+    @@all_tamagotchies.each() do |tamagotchi|
+      if tamagotchi.id().eql?(id)
+        found_tamagotchi = tamagotchi
+      end
+    end
+    found_tamagotchi
+  end
+
   define_method(:save) do
     @@all_tamagotchies.push(self)
   end
@@ -69,6 +79,10 @@ class Tamagotchi
 
   define_method(:set_activity_level) do |activity|
     @activity_level = activity
+  end
+
+  define_method(:break_loop) do
+    @active = false
   end
 
   define_method(:time_lapsed) do |seconds|

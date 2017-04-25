@@ -1,6 +1,22 @@
 <h1>The Tamagotchi was created!</h1>
 <h1><%= @tamagotchi.name %></h1>
-
+<ul>
+  <li>Mass: <%= @tamagotchi.food_level %></li>
+  <li>Alertness: <%= @tamagotchi.sleep_level %></li>
+  <li>Fitness: <%= @tamagotchi.activity_level %></li>
+</ul>
+<form action="/:id/feed" method="post">
+  <input name='tamagotchi_id' type='hidden' value='<%= @tamagotchi.id() %>'>
+  <button type="submit" name="button">Feed Me</button>
+</form>
+<form action="/:id/sleep" method="post">
+  <input name='tamagotchi_id' type='hidden' value='<%= @tamagotchi.id() %>'>
+  <button type="submit" name="button">Sleep</button>
+</form>
+<form action="/:id/activity" method="post">
+  <input name='tamagotchi_id' type='hidden' value='<%= @tamagotchi.id() %>'>
+  <button type="submit" name="button">Play</button>
+</form>
 <p>
   <a href="/">Back to Home</a>
 </p>
